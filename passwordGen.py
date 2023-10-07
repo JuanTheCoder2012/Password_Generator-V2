@@ -11,15 +11,15 @@ def generate_and_animate_password():
     else:
         all_characters = string.ascii_letters + string.digits + string.punctuation
         password = ''.join(random.choice(all_characters) for _ in range(length))
-        animate_password(password)
+        animate_password(password, 0)
 
 # Function to animate the password letter by letter
-def animate_password(password):
-    password_entry.delete(0, tk.END)
-    for char in password:
-        password_entry.insert(tk.END, char)
-        password_entry.update()
-        password_entry.after(100)  # 100 milliseconds delay between each letter
+def animate_password(password, index):
+    if index < len(password):
+        password_entry.delete(0, tk.END)
+        password_entry.insert(tk.END, password[:index+1])
+        index += 1
+        password_entry.after(100, animate_password, password, index)
 
 # GUI setup
 root = tk.Tk()
