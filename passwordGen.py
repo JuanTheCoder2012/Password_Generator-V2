@@ -33,6 +33,11 @@ def copy_password_to_clipboard():
 root = tk.Tk()
 root.title("Password Generator")
 
+# Set width and height of the GUI window
+window_width = 400
+window_height = 250
+root.geometry(f"{window_width}x{window_height}")
+
 # Label and entry for password length
 length_label = tk.Label(root, text="Enter Password Length:")
 length_label.pack()
@@ -40,7 +45,7 @@ length_entry = tk.Entry(root)
 length_entry.pack()
 
 # Button to generate password with animation
-generate_button = tk.Button(root, text="Generate Password with Animation", command=generate_password_with_animation)
+generate_button = tk.Button(root, text="Generate Password", command=generate_password_with_animation)
 generate_button.pack()
 
 # Label to display generated password
